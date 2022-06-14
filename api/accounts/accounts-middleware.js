@@ -8,7 +8,7 @@ exports.checkAccountPayload = (req, res, next) => {
   } else if (req.body.name.trim().length < 3 || req.body.name.trim().length > 100) {
     res.status(400).json({ message: 'name of account must be between 3 and 100' });
     return;
-  } else if (!req.body.budget || parseInt(req.body.budget) != req.body.budget) {
+  } else if (!req.body.budget || req.body.budget+0 != req.body.budget) {
     res.status(400).json({ message: 'budget must be a number' });
     return;
   } else if (req.body.budget < 0 || req.body.budget > 1000000) {

@@ -6,7 +6,7 @@ const getAll = () => {
 
 const getById = id => {
   return db('accounts')
-    .where({ id })
+    .where('id', id)
     .first();
 }
 
@@ -20,7 +20,7 @@ const create = account => {
 
 const updateById = (id, account) => {
   return db('accounts')
-    .where({ id })
+    .where('id', id)
     .update(account)
     .then(feedback => {
       return getById(id);
